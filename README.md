@@ -1,8 +1,9 @@
-REST API Example
-
+**REST API Example**
+***Your API classes should be alocated in /classes in main directory of API***
 This is an example REST API that demonstrates how to create a simple endpoint with a POST and a GET request. The API is built using PHP and can be accessed using the URL http://185.28.23.133/api/<endpoint class>/<endpoint module>.
 Endpoint Description
-POST Request
+
+***POST Request***
 
 The POST request is used to add new data to the endpoint. In this example, we will be adding a new user to the system. The request body should be in JSON format and include the following fields:
 
@@ -17,7 +18,7 @@ The POST request is used to add new data to the endpoint. In this example, we wi
 
 
 
-GET Request
+***GET Request***
 
 The GET request is used to retrieve data from the endpoint. In this example, we will be retrieving a list of all users in the system. The response body will be in JSON format and will include an array of user objects. Each user object will include the following fields:
 
