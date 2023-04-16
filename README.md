@@ -6,39 +6,39 @@ POST Request
 
 The POST request is used to add new data to the endpoint. In this example, we will be adding a new user to the system. The request body should be in JSON format and include the following fields:
 
-perl
+```json
+    {
+        "name": "John Doe",
+        "email": "johndoe@example.com",
+        "phone": "555-555-5555"
+    }
+    
+ ```
 
-{
-    "name": "John Doe",
-    "email": "johndoe@example.com",
-    "phone": "555-555-5555"
-}
+
 
 GET Request
 
 The GET request is used to retrieve data from the endpoint. In this example, we will be retrieving a list of all users in the system. The response body will be in JSON format and will include an array of user objects. Each user object will include the following fields:
 
-perl
-
-{
-    "name": "John Doe",
-    "email": "johndoe@example.com",
-    "phone": "555-555-5555"
-}
+```json
+    {
+        "name": "John Doe",
+        "email": "johndoe@example.com",
+        "phone": "555-555-5555"
+    }
+    
+ ```
 
 Endpoint Usage
 
 To add a new user to the system, make a POST request to the following URL:
-
-ruby
 
 http://185.28.23.133/api/user/add
 
 The request body should be in JSON format and include the user data as described above.
 
 To retrieve a list of all users in the system, make a GET request to the following URL:
-
-ruby
 
 http://185.28.23.133/api/user/list
 
