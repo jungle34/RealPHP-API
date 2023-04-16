@@ -4,7 +4,7 @@
 
 This is an example REST API that demonstrates how to create a simple endpoint with a POST and a GET request. The API is built using PHP and can be accessed using the URL http://185.28.23.133/api/<endpoint class>/<endpoint module>.
     
-Endpoint Description
+**Endpoint Description**
 
 ***POST Request***
 
