@@ -38,13 +38,13 @@ Endpoint Usage
 
 To add a new user to the system, make a POST request to the following URL:
 
-http://185.28.23.133/api/user/add
+http://host/api/user/add
 
 The request body should be in JSON format and include the user data as described above.
 
 To retrieve a list of all users in the system, make a GET request to the following URL:
 
-http://185.28.23.133/api/user/list
+http://host/api/user/list
 
 The response body will be in JSON format and will include an array of user objects, as described above.
 Conclusion
