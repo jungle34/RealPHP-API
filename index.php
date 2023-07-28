@@ -3,8 +3,7 @@
     header("Access-Control-Allow-Headers: *");
     header('Content-Type: application/json; charset=UTF-8');
     /**
-     * Developed by João Victor Ferreira De Andrade
-     * Florianópolis, SC, Brazil
+     * Developed by João Victor Ferreira De Andrade     
      * 
      * @gitHub jungle34
      * 
