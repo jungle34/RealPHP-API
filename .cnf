@@ -1,0 +1,6 @@
+<?php
+
+    define("DB_HOST", "localhost");
+    define("DB_USER", "remoto");
+    define("DB_BASE", "virtu");
+    define("DB_PASS", "BemboladoPepsi6969@79");

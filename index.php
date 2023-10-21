@@ -22,12 +22,7 @@
         function __construct(){  
             // Set the paramns of the request
             $this->paramns = $this->getRequestUrl();             
-            // Get request headers
-            $this->headers = $this->getHeaders();  
-            // Check if have authorizaton token
-            // Uncomment bellow line to allow the user to see the Access TOKEN
-            // if(!empty($this->headers['Authorization'])) $this->paramns['Authorization'] = $this->headers['Authorization'];            
-            // Chek if class and method exists
+
             $this->checkEndpoint();
             
         }
@@ -36,20 +31,10 @@
          * Call the class and the method in the request                        
          */
         function checkEndpoint(){            
-            $tmpUrl = str_replace("/api/", "", $_SERVER["REQUEST_URI"]);                 
-            $tmpUrl = explode('?', $tmpUrl);
-            $tmpUrl = explode('/', $tmpUrl[0]);
 
-            $this->class = !empty($tmpUrl[0]) ? ucfirst($tmpUrl[0]) : false;
-            $this->method = !empty($tmpUrl[1]) ? $tmpUrl[1] : false;
+            $this->setClassMethod();
 
-            if(!$this->class) $this->returnError("Insert the class request");
-            if(!$this->method) $this->returnError("Insert the method request");
-
-            $path = __DIR__."/classes/".$this->class.".php";            
-            if(!file_exists($path)){
-                $this->returnError("Invalid request - can not find the file of the request");
-            }
+            $this->pathVerify();
 
             $classFile = "classes/".$this->class.".php";
             require_once $classFile;                        
@@ -79,21 +64,7 @@
             }
 
             return $paramns;            
-        }
-
-        /**
-         * Get all request headers or block the rest if doesn't have request headers
-         */
-        function getHeaders(){
-            $aux = array();
-            $headers = getallheaders();
-
-            foreach ($headers as $key => $value) {
-                $aux[$key] = $value;
-            }
-            if(empty($aux)) $this->returnError("Request headers can not is empty");
-            return $aux;
-        }        
+        }                
 
         /**
          * Returns error message with JSON format
@@ -102,6 +73,25 @@
             $return = array("STATUS" => 'ERROR', "MESSAGE" => $err);
             echo json_encode($return);
             die();
+        }
+
+        private function pathVerify(){
+            $path = __DIR__."/classes/".$this->class.".php";            
+            if(!file_exists($path)){
+                $this->returnError("Invalid request - can not find the file of the request");
+            }
+        }
+
+        private function setClassMethod(){
+            $tmpUrl = str_replace("/api/", "", $_SERVER["REQUEST_URI"]);                 
+            $tmpUrl = explode('?', $tmpUrl);
+            $tmpUrl = explode('/', $tmpUrl[0]);
+
+            $this->class = !empty($tmpUrl[0]) ? ucfirst($tmpUrl[0]) : false;
+            $this->method = !empty($tmpUrl[1]) ? $tmpUrl[1] : false;
+
+            if(!$this->class) $this->returnError("Insert the class request");
+            if(!$this->method) $this->returnError("Insert the method request");
         }
     }
 
